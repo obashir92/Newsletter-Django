@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Newsletter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <div class="items-center justify-center bg-gray-800 my-5 px-10 py-20 text-white shadow-3xl">
+    <h1 class="text-2xl text-center mb-3 font-bold">Send Newsletter to All Subscribers</h1>
+    
+    <!-- Display success message -->
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label class="text-lg" for="subject">Subject</label><br>
+            <input type="text" class="w-1/4 my-3 py-1 px-2 text-black caret-black rounded-md" name="subject" placeholder="Enter the Subject" required>
+        </div>
+        <div>
+            <label class="text-lg" for="message">Message</label>
+            <textarea id="message" class="w-full mt-3 py-1 px-2 text-black rounded-md " rows="10" placeholder="Type your message" required></textarea>
+        </div>
+        <button class="bg-blue-700 my-3 p-3 rounded-md" type="submit">Send Newsletter</button>
+    </form>
+    </div>
+
+</body>
+</html>
